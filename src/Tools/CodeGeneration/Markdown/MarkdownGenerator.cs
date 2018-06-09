@@ -221,12 +221,7 @@ namespace Roslynator.CodeGeneration.Markdown
                 Samples(),
                 GetLinks(analyzer.Links),
                 Heading2("How to Suppress"),
-                Heading3("SuppressMessageAttribute"),
-                FencedCodeBlock($"[assembly: SuppressMessage(\"{analyzer.Category}\", \"{analyzer.Id}:{analyzer.Title}\", Justification = \"<Pending>\")]", LanguageIdentifiers.CSharp),
-                Heading3("#pragma"),
-                FencedCodeBlock($"#pragma warning disable {analyzer.Id} // {analyzer.Title}\r\n#pragma warning restore {analyzer.Id} // {analyzer.Title}", LanguageIdentifiers.CSharp),
-                Heading3("Ruleset"),
-                BulletItem(Link("How to configure rule set", "../HowToConfigureAnalyzers.md")));
+                BulletItem(Link("How to suppress diagnostic", "../HowToConfigureAnalyzers#HowToSupressDiagnostic.md")));
 
             document.AddFootnote();
 

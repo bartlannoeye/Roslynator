@@ -30,7 +30,7 @@ Rule set is typically stored in a file with extension **ruleset** and it has fol
 </RuleSet>
 ```
 
-## Step by Step Tutorial
+## Step by Step Tutorial: Configure a Rule Set
 
 ### Old csproj format (.NET Framework)
 
@@ -88,6 +88,46 @@ Rule set is typically stored in a file with extension **ruleset** and it has fol
 <PropertyGroup>
   <CodeAnalysisRuleSet>relative_or_absolute_path_to_ruleset_file</CodeAnalysisRuleSet>
 </PropertyGroup>
+```
+
+## How to Suppress a Diagnostic
+
+### SuppressMessageAttribute
+
+#### Add SuppressMessageAttribute to Containing Declaration
+
+```csharp
+[SuppressMessage("Readability", "RCS1008:Use explicit type instead of 'var' (when the type is not obvious).", Justification = "<Pending>")]
+void M()
+{
+    var x = Foo();
+}
+```
+
+#### Add SuppressMessageAttribute to Assembly
+
+```csharp
+
+[assembly: SuppressMessage("Readability", "RCS1008:Use explicit type instead of 'var' (when the type is not obvious).", Justification = "<Pending>", Scope = "member", Target = "~M:N.C.M")]
+
+namespace N
+{
+    class C
+    {
+        void M()
+        {
+            var x = Foo();
+        }
+    }
+}
+```
+
+### \#pragma
+
+```csharp
+#pragma warning disable RCS1008 // Use explicit type instead of 'var' (when the type is not obvious).
+var x = Foo();
+#pragma warning restore RCS1008 // Use explicit type instead of 'var' (when the type is not obvious).
 ```
 
 ## MSDN Links
