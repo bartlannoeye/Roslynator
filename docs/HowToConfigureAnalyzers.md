@@ -1,5 +1,12 @@
 ﻿# How to: Configure Analyzers
 
+## Content
+
+* [Introduction](#introduction) 
+* [What Is Rule Set](#what-is-rule-set)
+* [How to Configure a Rule Set](#how-to-configure-a-rule-set)
+* [How to Suppress a Diagnostic](#how-to-suppress-a-diagnostic)
+
 ## Introduction
 
 * It is a common requirement to enable/disable specific analyzer or/and to change its action (from **Warning** to **Info** etc.)
@@ -30,7 +37,7 @@ Rule set is typically stored in a file with extension **ruleset** and it has fol
 </RuleSet>
 ```
 
-## Step by Step Tutorial: Configure a Rule Set
+## How to Configure a Rule Set
 
 ### Old csproj format (.NET Framework)
 
