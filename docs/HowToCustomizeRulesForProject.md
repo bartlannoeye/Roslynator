@@ -4,9 +4,9 @@ It is common that you have one rule set in you solution that is shared across al
 
 It is also common that you want to enable/disable certain analyzer in one or several projects.
 
-## Example: Disable Analyzer in a Project
+## Example: Disable an Analyzer in a Project
 
-Let's say you would like to disable rule **RCS1090** in a project **AspNetCoreProject** which uses rule set **global.ruleset**.
+Let's say you would like to disable analyzer **RCS1090** in a project **AspNetCoreProject** which uses rule set **global.ruleset**.
 
 1) Create a new rule set file with following content:
 
@@ -22,4 +22,4 @@ Let's say you would like to disable rule **RCS1090** in a project **AspNetCorePr
 
 2) Update **AspNetCoreProject.csproj** so it uses newly created rule set instead of **global.ruleset**.
 
-**RCS1090** is now disabled in **AspNetCoreProject** and all other rules are inherited from **global.ruleset**.
+Analyzer **RCS1090** is now disabled in **AspNetCoreProject** and all other rules are inherited from **global.ruleset**.

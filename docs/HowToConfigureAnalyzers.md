@@ -93,23 +93,23 @@ Rule set is typically stored in a file with extension **ruleset** and it has fol
 ## How to Suppress a Diagnostic
 
 If you want to disable an analyzer completely you have use a rule set.
-But if you want to suppress a certain diagnostic you have to use either **SuppressMessageAttribute** or **\#pragma warning disable**.
+But if you want to suppress a diagnostic you have to use either `SuppressMessageAttribute` or `\#pragma warning` preprocessor directive.
 
-### Add SuppressMessageAttribute to Containing Declaration
+### Add `SuppressMessageAttribute` to Containing Declaration
 
 ```csharp
-[SuppressMessage("Readability", "RCS1008:Use explicit type instead of 'var' (when the type is not obvious).", Justification = "<Pending>")]
+[SuppressMessage("Readability", "RCS1008", Justification = "<Pending>")]
 void M()
 {
     var x = Foo();
 }
 ```
 
-### Add SuppressMessageAttribute to Assembly
+### Add `SuppressMessageAttribute` to Assembly
 
 ```csharp
 
-[assembly: SuppressMessage("Readability", "RCS1008:Use explicit type instead of 'var' (when the type is not obvious).", Justification = "<Pending>", Scope = "member", Target = "~M:N.C.M")]
+[assembly: SuppressMessage("Readability", "RCS1008", Justification = "<Pending>", Scope = "member", Target = "~M:N.C.M")]
 
 namespace N
 {
@@ -123,7 +123,7 @@ namespace N
 }
 ```
 
-### Add \#pragma warning Preprocessor Directive
+### Add `\#pragma warning` Preprocessor Directive
 
 ```csharp
 #pragma warning disable RCS1008 // Use explicit type instead of 'var' (when the type is not obvious).
