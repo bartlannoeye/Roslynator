@@ -93,7 +93,7 @@ Rule set is typically stored in a file with extension **ruleset** and it has fol
 ## How to Suppress a Diagnostic
 
 If you want to disable an analyzer completely you have use a rule set.
-But if you want to suppress a diagnostic you have to use either `SuppressMessageAttribute` or `\#pragma warning` preprocessor directive.
+But if you want to suppress a diagnostic you have to use either `SuppressMessageAttribute` or `#pragma warning` preprocessor directive.
 
 ### Add `SuppressMessageAttribute` to Containing Declaration
 
@@ -101,7 +101,7 @@ But if you want to suppress a diagnostic you have to use either `SuppressMessage
 [SuppressMessage("Readability", "RCS1008", Justification = "<Pending>")]
 void M()
 {
-    var x = Foo();
+    var x = Foo(); // no RCS1008 here
 }
 ```
 
@@ -109,30 +109,28 @@ void M()
 
 ```csharp
 
-[assembly: SuppressMessage("Readability", "RCS1008", Justification = "<Pending>", Scope = "member", Target = "~M:N.C.M")]
+[assembly: SuppressMessage("Readability", "RCS1008", Justification = "<Pending>", Scope = "member", Target = "~M:C.M")]
 
-namespace N
+class C
 {
-    class C
+    void M()
     {
-        void M()
-        {
-            var x = Foo();
-        }
+        var x = Foo(); // no RCS1008 here
     }
 }
 ```
 
-### Add `\#pragma warning` Preprocessor Directive
+### Add `#pragma warning` Preprocessor Directive
 
 ```csharp
-#pragma warning disable RCS1008 // Use explicit type instead of 'var' (when the type is not obvious).
-var x = Foo();
-#pragma warning restore RCS1008 // Use explicit type instead of 'var' (when the type is not obvious).
+#pragma warning disable RCS1008
+var x = Foo(); // no RCS1008 here
+#pragma warning restore RCS1008
 ```
 
-## MSDN Links
+## Links
 
 * [How to: Create a Custom Rule Set](https://msdn.microsoft.com/en-us/library/dd264974.aspx)
 * [Working in the Code Analysis Rule Set Editor](https://msdn.microsoft.com/en-us/library/dd380626.aspx)
 * [How to: Specify Managed Code Rule Sets for Multiple Projects in a Solution](https://msdn.microsoft.com/en-us/library/dd465181.aspx)
+* [Rule Set XML Schema](https://github.com/dotnet/roslyn/blob/master/src/Compilers/Core/Portable/RuleSet/RuleSetSchema.xsd)

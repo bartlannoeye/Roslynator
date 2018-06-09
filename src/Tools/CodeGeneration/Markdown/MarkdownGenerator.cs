@@ -221,7 +221,7 @@ namespace Roslynator.CodeGeneration.Markdown
                 Samples(),
                 GetLinks(analyzer.Links),
                 Heading2("How to Suppress"),
-                BulletItem(Link("How to suppress a diagnostic", "../HowToConfigureAnalyzers#how-to-suppress-a-diagnostic")));
+                BulletItem(Link("How to suppress a diagnostic", "../HowToConfigureAnalyzers.md#how-to-suppress-a-diagnostic")));
 
             document.AddFootnote();
 
