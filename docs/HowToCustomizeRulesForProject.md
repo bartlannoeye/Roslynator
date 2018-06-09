@@ -1,14 +1,14 @@
 ﻿# How to: Customize Rules for a Project
 
-It is common that you have in you solution one rule set that is shared across all projects (global.ruleset).
+It is common that you have one rule set in you solution that is shared across all projects (**global.ruleset**).
 
-It is also common that you want to disable/enable certain analyzer in one or more (but not all) projects.
+It is also common that you want to enable/disable certain analyzer in one or several projects.
 
 ## Example: Disable Analyzer in a Project
 
-Let's say you would like to disable rule **RCS1090** in a project 'AspNetCoreProject' which uses rule set global.ruleset.
+Let's say you would like to disable rule **RCS1090** in a project **AspNetCoreProject** which uses rule set **global.ruleset**.
 
-1) Create a new rule set file called 'project.ruleset' with following content:
+1) Create a new rule set file with following content:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -20,6 +20,6 @@ Let's say you would like to disable rule **RCS1090** in a project 'AspNetCorePro
 </RuleSet>
 ```
 
-2) Update AspNetCoreProject.csproj so it uses project.ruleset instead of global.ruleset.
+2) Update **AspNetCoreProject.csproj** so it uses newly created rule set instead of **global.ruleset**.
 
-Now **RCS1090** is disabled in AspNetCoreProject and all other rules are inherited from global.ruleset.
+**RCS1090** is now disabled in **AspNetCoreProject** and all other rules are inherited from **global.ruleset**.
